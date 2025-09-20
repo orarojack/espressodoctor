@@ -403,7 +403,7 @@ function App() {
                 </div>
                 <div className="flex justify-between items-center py-3">
                   <span className="text-lg font-medium text-gray-700">Kenyan Shillings</span>
-                  <span className="text-xl font-bold text-gray-600">≈ 60,000 KSH</span>
+                  <span className="text-xl font-bold text-gray-600">≈ 52,000 KSH</span>
                 </div>
               </div>
             </div>

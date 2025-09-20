@@ -1,10 +1,9 @@
-import { Phone, Mail, Coffee, Award, Users, BookOpen, Wrench, Star, MapPin, Clock, Instagram } from 'lucide-react';
+import { Phone, Mail, Coffee, Award, Users, Star, MapPin, Clock, Instagram } from 'lucide-react';
 
 function App() {
   const services = [
     {
       icon: <Coffee className="w-8 h-8" />,
-<<<<<<< HEAD
       title: "Coffee Training",
       description: "Comprehensive training program covering espresso extraction, milk steaming, latte art, and customer service skills."
     },
@@ -12,30 +11,6 @@ function App() {
       icon: <Users className="w-8 h-8" />,
       title: "Business Consultation",
       description: "Professional business consultation including operations management, staff training, customer experience optimization, and coffee shop management."
-=======
-      title: "Barista Training Program",
-      description: "Comprehensive training program covering espresso extraction, milk steaming, latte art, and customer service skills."
-    },
-    {
-      icon: <Wrench className="w-8 h-8" />,
-      title: "Machine Maintenance Course",
-      description: "Learn to maintain and repair espresso machines, grinders, and other coffee equipment with hands-on experience."
-    },
-    {
-      icon: <Award className="w-8 h-8" />,
-      title: "Coffee Quality Assessment",
-      description: "Advanced cupping techniques and quality control methods for coffee shops and roasters."
-    },
-    {
-      icon: <Users className="w-8 h-8" />,
-      title: "Coffee Shop Management",
-      description: "Business skills training including operations management, staff training, and customer experience optimization."
-    },
-    {
-      icon: <BookOpen className="w-8 h-8" />,
-      title: "Coffee Knowledge Certification",
-      description: "Comprehensive certification program covering coffee origins, processing methods, and brewing techniques."
->>>>>>> 3b5d3d4e0e2ed2a9ec375cdd0fa0724e7242f724
     }
   ];
 
@@ -142,7 +117,7 @@ function App() {
               </h1>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
                 Transform your coffee knowledge with professional training programs designed by industry experts. 
-                From barista skills to machine maintenance, we provide comprehensive education for coffee professionals.
+                From barista skills to business management, we provide comprehensive education for coffee professionals.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <button 
@@ -161,7 +136,7 @@ function App() {
             </div>
             <div className="relative">
               <img 
-                src="/picture4.jpeg" 
+                src="/espresso-doctor-logo.png" 
                 alt="Professional Barista Training"
                 className="rounded-2xl shadow-2xl w-full h-96 object-cover"
               />
@@ -183,13 +158,13 @@ function App() {
       <section id="services" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Training Services</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Services</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Comprehensive training programs designed to elevate your coffee expertise and business success
+              Professional coffee training and business consultation services
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {services.map((service, index) => (
               <div 
                 key={index}
@@ -202,7 +177,7 @@ function App() {
                   onClick={handleWhatsAppContact}
                   className="text-amber-600 font-semibold hover:text-amber-700 transition-colors flex items-center space-x-2"
                 >
-                  <span>Learn More</span>
+                  <span>Enroll Me</span>
                   <span className="transform transition-transform group-hover:translate-x-1">→</span>
                 </button>
               </div>
@@ -215,7 +190,7 @@ function App() {
       <section id="products" className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Training Products</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Products On Sale</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Professional tools and materials to support your coffee training and business operations
             </p>
@@ -239,7 +214,7 @@ function App() {
                     onClick={handleWhatsAppContact}
                     className="w-full bg-amber-600 text-white py-2 rounded-lg hover:bg-amber-700 transition-colors font-medium"
                   >
-                    Contact for Details
+                    Enroll Me
                   </button>
                 </div>
               </div>
@@ -277,7 +252,7 @@ function App() {
                   onClick={handleWhatsAppContact}
                   className="w-full bg-amber-600 text-white py-2 rounded-lg hover:bg-amber-700 transition-colors font-medium"
                 >
-                  Learn More
+                  Enroll Me
                 </button>
               </div>
             </div>
@@ -300,7 +275,7 @@ function App() {
                   onClick={handleWhatsAppContact}
                   className="w-full bg-amber-600 text-white py-2 rounded-lg hover:bg-amber-700 transition-colors font-medium"
                 >
-                  Learn More
+                  Enroll Me
                 </button>
               </div>
             </div>
@@ -323,7 +298,7 @@ function App() {
                   onClick={handleWhatsAppContact}
                   className="w-full bg-amber-600 text-white py-2 rounded-lg hover:bg-amber-700 transition-colors font-medium"
                 >
-                  Learn More
+                  Enroll Me
                 </button>
               </div>
             </div>
@@ -342,7 +317,7 @@ function App() {
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
+            {[1, 2, 3, 5, 6, 7, 8, 9, 10].map((num) => (
               <div 
                 key={num}
                 className="aspect-square overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer"
@@ -399,6 +374,83 @@ function App() {
                 </button>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Payment Information Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Course Fees & Payment</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Affordable training programs with flexible payment options
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {/* Course Fees */}
+            <div className="bg-white rounded-2xl p-8 shadow-lg">
+              <h3 className="text-2xl font-semibold text-gray-900 mb-6">Course Fees</h3>
+              <div className="space-y-4">
+                <div className="flex justify-between items-center py-3 border-b border-gray-100">
+                  <span className="text-lg font-medium text-gray-700">Full Payment</span>
+                  <span className="text-2xl font-bold text-amber-600">1,500 AED</span>
+                </div>
+                <div className="flex justify-between items-center py-3 border-b border-gray-100">
+                  <span className="text-lg font-medium text-gray-700">Installments (2 payments)</span>
+                  <span className="text-2xl font-bold text-amber-600">750 AED each</span>
+                </div>
+                <div className="flex justify-between items-center py-3">
+                  <span className="text-lg font-medium text-gray-700">Kenyan Shillings</span>
+                  <span className="text-xl font-bold text-gray-600">≈ 60,000 KSH</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Bank Details */}
+            <div className="bg-white rounded-2xl p-8 shadow-lg">
+              <h3 className="text-2xl font-semibold text-gray-900 mb-6">Bank Details</h3>
+              <div className="space-y-3 text-sm">
+                <div>
+                  <span className="font-semibold text-gray-700">Bank Name:</span>
+                  <span className="ml-2 text-gray-600">Abu Dhabi Commercial Bank PJSC</span>
+                </div>
+                <div>
+                  <span className="font-semibold text-gray-700">Account Title:</span>
+                  <span className="ml-2 text-gray-600">SULEIMAN NGALA ALI</span>
+                </div>
+                <div>
+                  <span className="font-semibold text-gray-700">Account Number:</span>
+                  <span className="ml-2 text-gray-600">12004306820001</span>
+                </div>
+                <div>
+                  <span className="font-semibold text-gray-700">IBAN:</span>
+                  <span className="ml-2 text-gray-600 font-mono">AE560030012004306820001</span>
+                </div>
+                <div>
+                  <span className="font-semibold text-gray-700">Currency:</span>
+                  <span className="ml-2 text-gray-600">AED</span>
+                </div>
+                <div>
+                  <span className="font-semibold text-gray-700">Branch:</span>
+                  <span className="ml-2 text-gray-600">IBD - KHALDIYA TOWER BRANCH</span>
+                </div>
+                <div>
+                  <span className="font-semibold text-gray-700">Swift Code:</span>
+                  <span className="ml-2 text-gray-600 font-mono">ADCBAEAA</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="text-center mt-8">
+            <button 
+              onClick={handleWhatsAppContact}
+              className="bg-amber-600 text-white px-8 py-4 rounded-lg hover:bg-amber-700 transition-colors font-semibold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+            >
+              Enroll Now - Contact Us
+            </button>
           </div>
         </div>
       </section>

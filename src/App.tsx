@@ -322,7 +322,6 @@ function App() {
               <video 
                 controls 
                 className="w-full h-96 object-cover"
-                poster="/picture4.jpeg"
               >
                 <source src="/art.mp4" type="video/mp4" />
                 Your browser does not support the video tag.

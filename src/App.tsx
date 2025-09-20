@@ -137,7 +137,7 @@ function App() {
             </div>
             <div className="relative">
               <img 
-                src="/espresso-doctor-logo.png" 
+                src="/about1.jpeg" 
                 alt="Professional Barista Training"
                 className="rounded-2xl shadow-2xl w-full h-96 object-cover"
               />
@@ -239,7 +239,7 @@ function App() {
               <video 
                 controls 
                 className="w-full h-64 object-cover"
-                poster="/picture1.jpeg"
+                // poster="/picture1.jpeg"
               >
                 <source src="/vida1.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
@@ -262,7 +262,7 @@ function App() {
               <video 
                 controls 
                 className="w-full h-64 object-cover"
-                poster="/picture2.jpeg"
+                // poster="/picture2.jpeg"
               >
                 <source src="/vida2.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
@@ -285,7 +285,7 @@ function App() {
               <video 
                 controls 
                 className="w-full h-64 object-cover"
-                poster="/picture3.jpeg"
+                // poster="/picture10.jpeg"
               >
                 <source src="/vida3.mp4" type="video/mp4" />
                 Your browser does not support the video tag.

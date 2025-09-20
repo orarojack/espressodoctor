@@ -82,6 +82,7 @@ function App() {
             <nav className="hidden md:flex space-x-8">
               <a href="#services" className="text-gray-700 hover:text-amber-600 transition-colors font-medium">Services</a>
               <a href="#products" className="text-gray-700 hover:text-amber-600 transition-colors font-medium">Products</a>
+              <a href="#art-time" className="text-gray-700 hover:text-amber-600 transition-colors font-medium">Art Time</a>
               <a href="#gallery" className="text-gray-700 hover:text-amber-600 transition-colors font-medium">Gallery</a>
               <a href="#about" className="text-gray-700 hover:text-amber-600 transition-colors font-medium">About</a>
               <a href="#contact" className="text-gray-700 hover:text-amber-600 transition-colors font-medium">Contact</a>
@@ -214,7 +215,7 @@ function App() {
                     onClick={handleWhatsAppContact}
                     className="w-full bg-amber-600 text-white py-2 rounded-lg hover:bg-amber-700 transition-colors font-medium"
                   >
-                    Enroll Me
+                    Contact for Details
                   </button>
                 </div>
               </div>
@@ -300,6 +301,52 @@ function App() {
                 >
                   Enroll Me
                 </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Art Time Section */}
+      <section id="art-time" className="py-20 bg-gradient-to-r from-purple-50 to-pink-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">🎨 Art Time</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Discover the creative side of coffee with our art demonstration video
+            </p>
+          </div>
+          
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+              <video 
+                controls 
+                className="w-full h-96 object-cover"
+                poster="/picture4.jpeg"
+              >
+                <source src="/art.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <div className="p-8">
+                <h3 className="text-2xl font-semibold text-gray-900 mb-4">Coffee Art Demonstration</h3>
+                <p className="text-gray-600 mb-6 text-lg leading-relaxed">
+                  Watch our expert demonstrate the beautiful art of coffee preparation. Learn techniques 
+                  that transform your coffee into a work of art while mastering the craft of espresso making.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <button 
+                    onClick={handleWhatsAppContact}
+                    className="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors font-medium"
+                  >
+                    Learn Coffee Art
+                  </button>
+                  <button 
+                    onClick={() => document.getElementById('gallery')?.scrollIntoView({ behavior: 'smooth' })}
+                    className="border-2 border-purple-600 text-purple-600 px-6 py-3 rounded-lg hover:bg-purple-600 hover:text-white transition-colors font-medium"
+                  >
+                    View Gallery
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -592,6 +639,7 @@ function App() {
               <div className="space-y-2">
                 <a href="#services" className="text-gray-400 hover:text-white transition-colors block">Training Services</a>
                 <a href="#products" className="text-gray-400 hover:text-white transition-colors block">Products</a>
+                <a href="#art-time" className="text-gray-400 hover:text-white transition-colors block">Art Time</a>
                 <a href="#gallery" className="text-gray-400 hover:text-white transition-colors block">Gallery</a>
                 <a href="#about" className="text-gray-400 hover:text-white transition-colors block">About Us</a>
                 <a href="#contact" className="text-gray-400 hover:text-white transition-colors block">Contact</a>

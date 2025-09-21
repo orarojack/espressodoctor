@@ -1,6 +1,8 @@
 import { Phone, Mail, Coffee, Award, Users, Star, MapPin, Clock, Instagram } from 'lucide-react';
+import { useState } from 'react';
 
 function App() {
+  const [selectedRating, setSelectedRating] = useState(0);
   const services = [
     {
       icon: <Coffee className="w-8 h-8" />,
@@ -63,6 +65,44 @@ function App() {
 
   const handleEmailContact = () => {
     window.location.href = 'mailto:1991suleimanali@gmail.com?subject=Training Inquiry&body=Hello, I am interested in learning more about your services and products.';
+  };
+
+  const handleReviewSubmit = (contactMethod: 'whatsapp' | 'email') => {
+    // Get form data
+    const nameInput = document.querySelector('input[placeholder="Enter your name"]') as HTMLInputElement;
+    const emailInput = document.querySelector('input[placeholder="your@email.com"]') as HTMLInputElement;
+    const reviewTextarea = document.querySelector('textarea[placeholder="Tell us about your training experience..."]') as HTMLTextAreaElement;
+
+    const name = nameInput?.value || 'Anonymous';
+    const email = emailInput?.value || '';
+    const review = reviewTextarea?.value || 'No review provided';
+    const rating = selectedRating || 0;
+
+    // Create the message content
+    const message = `🌟 NEW REVIEW SUBMISSION 🌟
+
+👤 Name: ${name}
+📧 Email: ${email || 'Not provided'}
+⭐ Rating: ${rating}/5 stars
+📝 Review: ${review}
+
+---
+This review was submitted through the website.`;
+
+    if (contactMethod === 'whatsapp') {
+      const whatsappUrl = `https://wa.me/971581966701?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank');
+    } else {
+      const emailSubject = `New Review Submission from ${name}`;
+      const emailBody = message;
+      window.location.href = `mailto:1991suleimanali@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+    }
+
+    // Reset form after submission
+    if (nameInput) nameInput.value = '';
+    if (emailInput) emailInput.value = '';
+    if (reviewTextarea) reviewTextarea.value = '';
+    setSelectedRating(0);
   };
 
   return (
@@ -475,11 +515,21 @@ function App() {
                   <label className="block text-sm font-medium text-gray-700 mb-2">Rating</label>
                   <div className="flex space-x-1 sm:space-x-2">
                     {[1, 2, 3, 4, 5].map((star) => (
-                      <button key={star} type="button" className="text-xl sm:text-2xl text-gray-300 hover:text-amber-500 transition-colors">
+                      <button 
+                        key={star} 
+                        type="button" 
+                        onClick={() => setSelectedRating(star)}
+                        className={`text-xl sm:text-2xl transition-colors ${
+                          star <= selectedRating ? 'text-amber-500' : 'text-gray-300 hover:text-amber-400'
+                        }`}
+                      >
                         ⭐
                       </button>
                     ))}
                   </div>
+                  {selectedRating > 0 && (
+                    <p className="text-sm text-gray-600 mt-1">You rated: {selectedRating}/5 stars</p>
+                  )}
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Your Review</label>
@@ -492,14 +542,14 @@ function App() {
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                   <button 
                     type="button"
-                    onClick={handleWhatsAppContact}
+                    onClick={() => handleReviewSubmit('whatsapp')}
                     className="flex-1 bg-amber-600 text-white py-2 sm:py-3 rounded-lg hover:bg-amber-700 transition-colors font-medium text-sm sm:text-base"
                   >
                     Send via WhatsApp
                   </button>
                   <button 
                     type="button"
-                    onClick={handleEmailContact}
+                    onClick={() => handleReviewSubmit('email')}
                     className="flex-1 border-2 border-amber-600 text-amber-600 py-2 sm:py-3 rounded-lg hover:bg-amber-600 hover:text-white transition-colors font-medium text-sm sm:text-base"
                   >
                     Send via Email

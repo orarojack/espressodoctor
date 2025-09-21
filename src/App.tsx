@@ -84,6 +84,7 @@ function App() {
               <a href="#products" className="text-gray-700 hover:text-amber-600 transition-colors font-medium">Products</a>
               <a href="#art-time" className="text-gray-700 hover:text-amber-600 transition-colors font-medium">Art Time</a>
               <a href="#gallery" className="text-gray-700 hover:text-amber-600 transition-colors font-medium">Gallery</a>
+              <a href="#reviews" className="text-gray-700 hover:text-amber-600 transition-colors font-medium">Reviews</a>
               <a href="#about" className="text-gray-700 hover:text-amber-600 transition-colors font-medium">About</a>
               <a href="#contact" className="text-gray-700 hover:text-amber-600 transition-colors font-medium">Contact</a>
             </nav>
@@ -379,17 +380,75 @@ function App() {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="py-20 bg-white">
+      {/* Reviews & Feedback Section */}
+      <section id="reviews" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Student Testimonials</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Reviews & Feedback</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Hear what our students have to say about their training experience
+              Share your experience and read what others say about our training programs
             </p>
           </div>
           
-          <div className="max-w-4xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* Review Form */}
+            <div className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl p-8 shadow-lg">
+              <h3 className="text-2xl font-semibold text-gray-900 mb-6">Share Your Review</h3>
+              <form className="space-y-6">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Your Name</label>
+                  <input 
+                    type="text" 
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                    placeholder="Enter your name"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Email (Optional)</label>
+                  <input 
+                    type="email" 
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                    placeholder="your@email.com"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Rating</label>
+                  <div className="flex space-x-2">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <button key={star} type="button" className="text-2xl text-gray-300 hover:text-amber-500 transition-colors">
+                        ⭐
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Your Review</label>
+                  <textarea 
+                    rows={4}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                    placeholder="Tell us about your training experience..."
+                  ></textarea>
+                </div>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <button 
+                    type="button"
+                    onClick={handleWhatsAppContact}
+                    className="flex-1 bg-amber-600 text-white py-3 rounded-lg hover:bg-amber-700 transition-colors font-medium"
+                  >
+                    Send via WhatsApp
+                  </button>
+                  <button 
+                    type="button"
+                    onClick={handleEmailContact}
+                    className="flex-1 border-2 border-amber-600 text-amber-600 py-3 rounded-lg hover:bg-amber-600 hover:text-white transition-colors font-medium"
+                  >
+                    Send via Email
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            {/* Audio Testimonial */}
             <div className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl p-8 shadow-lg">
               <div className="text-center mb-8">
                 <div className="w-20 h-20 bg-amber-600 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -419,6 +478,30 @@ function App() {
                   Start Your Training Journey
                 </button>
               </div>
+            </div>
+          </div>
+
+          {/* Social Sharing */}
+          <div className="mt-16 text-center">
+            <h3 className="text-2xl font-semibold text-gray-900 mb-6">Share Your Experience</h3>
+            <p className="text-gray-600 mb-8">Help others discover our training by sharing on social media</p>
+            <div className="flex justify-center space-x-4">
+              <button 
+                onClick={() => window.open('https://www.instagram.com/sulespresso_ali?igsh=cXNqMDB4YXN6dzhk&utm_source=qr', '_blank')}
+                className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-300 font-medium flex items-center space-x-2"
+              >
+                <Instagram className="w-5 h-5" />
+                <span>Share on Instagram</span>
+              </button>
+              <button 
+                onClick={() => window.open('https://www.tiktok.com/@espresso.doctor?_t=ZS-8zrYidw3jFK&_r=1', '_blank')}
+                className="bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition-colors font-medium flex items-center space-x-2"
+              >
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                </svg>
+                <span>Share on TikTok</span>
+              </button>
             </div>
           </div>
         </div>
@@ -640,6 +723,7 @@ function App() {
                 <a href="#products" className="text-gray-400 hover:text-white transition-colors block">Products</a>
                 <a href="#art-time" className="text-gray-400 hover:text-white transition-colors block">Art Time</a>
                 <a href="#gallery" className="text-gray-400 hover:text-white transition-colors block">Gallery</a>
+                <a href="#reviews" className="text-gray-400 hover:text-white transition-colors block">Reviews</a>
                 <a href="#about" className="text-gray-400 hover:text-white transition-colors block">About Us</a>
                 <a href="#contact" className="text-gray-400 hover:text-white transition-colors block">Contact</a>
               </div>

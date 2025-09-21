@@ -68,86 +68,146 @@ function App() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="bg-white shadow-sm sticky top-0 z-50">
+      <header className="bg-white shadow-lg sticky top-0 z-50 backdrop-blur-sm bg-white/95">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            <div className="flex items-center space-x-3">
+          <div className="flex justify-between items-center py-3 lg:py-4">
+            {/* Logo and Brand */}
+            <div className="flex items-center space-x-2 lg:space-x-3 flex-shrink-0">
               <img 
                 src="/espresso-doctor-logo.png" 
                 alt="Espresso Doctor Logo" 
-                className="w-12 h-12 object-contain"
+                className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 object-contain"
               />
-              <span className="text-xl font-bold text-gray-900">Espresso Doctor Training Institute</span>
+              <span className="text-sm sm:text-base lg:text-xl font-bold text-gray-900 leading-tight">
+                <span className="hidden sm:inline">Espresso Doctor Training Institute</span>
+                <span className="sm:hidden">Espresso Doctor</span>
+              </span>
             </div>
-            <nav className="hidden md:flex space-x-8">
-              <a href="#services" className="text-gray-700 hover:text-amber-600 transition-colors font-medium">Services</a>
-              <a href="#products" className="text-gray-700 hover:text-amber-600 transition-colors font-medium">Products</a>
-              <a href="#art-time" className="text-gray-700 hover:text-amber-600 transition-colors font-medium">Art Time</a>
-              <a href="#gallery" className="text-gray-700 hover:text-amber-600 transition-colors font-medium">Gallery</a>
-              <a href="#reviews" className="text-gray-700 hover:text-amber-600 transition-colors font-medium">Reviews</a>
-              <a href="#about" className="text-gray-700 hover:text-amber-600 transition-colors font-medium">About</a>
-              <a href="#contact" className="text-gray-700 hover:text-amber-600 transition-colors font-medium">Contact</a>
+
+            {/* Desktop Navigation */}
+            <nav className="hidden lg:flex space-x-6 xl:space-x-8">
+              <a href="#services" className="text-gray-700 hover:text-amber-600 transition-colors font-medium text-sm xl:text-base">Services</a>
+              <a href="#products" className="text-gray-700 hover:text-amber-600 transition-colors font-medium text-sm xl:text-base">Products</a>
+              <a href="#art-time" className="text-gray-700 hover:text-amber-600 transition-colors font-medium text-sm xl:text-base">Art Time</a>
+              <a href="#gallery" className="text-gray-700 hover:text-amber-600 transition-colors font-medium text-sm xl:text-base">Gallery</a>
+              <a href="#reviews" className="text-gray-700 hover:text-amber-600 transition-colors font-medium text-sm xl:text-base">Reviews</a>
+              <a href="#about" className="text-gray-700 hover:text-amber-600 transition-colors font-medium text-sm xl:text-base">About</a>
+              <a href="#contact" className="text-gray-700 hover:text-amber-600 transition-colors font-medium text-sm xl:text-base">Contact</a>
             </nav>
-            <div className="flex space-x-3">
+
+            {/* Action Buttons */}
+            <div className="flex items-center space-x-2 sm:space-x-3">
+              {/* Mobile Menu Button */}
               <button 
-                onClick={handleWhatsAppContact}
-                className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors font-medium flex items-center space-x-2"
+                onClick={() => {
+                  const mobileMenu = document.getElementById('mobile-menu');
+                  if (mobileMenu) {
+                    mobileMenu.classList.toggle('hidden');
+                  }
+                }}
+                className="lg:hidden p-2 rounded-lg text-gray-700 hover:text-amber-600 hover:bg-gray-100 transition-colors"
+                aria-label="Toggle mobile menu"
               >
-                <Phone className="w-4 h-4" />
-                <span className="hidden sm:inline">WhatsApp</span>
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
               </button>
-              <button 
-                onClick={handleEmailContact}
-                className="bg-amber-600 text-white px-4 py-2 rounded-lg hover:bg-amber-700 transition-colors font-medium flex items-center space-x-2"
-              >
-                <Mail className="w-4 h-4" />
-                <span className="hidden sm:inline">Email</span>
-              </button>
+
+              {/* Contact Buttons */}
+              <div className="hidden sm:flex space-x-2 lg:space-x-3">
+                <button 
+                  onClick={handleWhatsAppContact}
+                  className="bg-green-600 text-white px-3 py-2 lg:px-4 lg:py-2 rounded-lg hover:bg-green-700 transition-all duration-300 font-medium flex items-center space-x-1 lg:space-x-2 text-xs lg:text-sm shadow-md hover:shadow-lg"
+                >
+                  <Phone className="w-3 h-3 lg:w-4 lg:h-4" />
+                  <span className="hidden lg:inline">WhatsApp</span>
+                  <span className="lg:hidden">WA</span>
+                </button>
+                <button 
+                  onClick={handleEmailContact}
+                  className="bg-amber-600 text-white px-3 py-2 lg:px-4 lg:py-2 rounded-lg hover:bg-amber-700 transition-all duration-300 font-medium flex items-center space-x-1 lg:space-x-2 text-xs lg:text-sm shadow-md hover:shadow-lg"
+                >
+                  <Mail className="w-3 h-3 lg:w-4 lg:h-4" />
+                  <span className="hidden lg:inline">Email</span>
+                  <span className="lg:hidden">Email</span>
+                </button>
+              </div>
+
+              {/* Mobile Contact Buttons */}
+              <div className="flex sm:hidden space-x-1">
+                <button 
+                  onClick={handleWhatsAppContact}
+                  className="bg-green-600 text-white p-2 rounded-lg hover:bg-green-700 transition-colors"
+                  aria-label="WhatsApp"
+                >
+                  <Phone className="w-4 h-4" />
+                </button>
+                <button 
+                  onClick={handleEmailContact}
+                  className="bg-amber-600 text-white p-2 rounded-lg hover:bg-amber-700 transition-colors"
+                  aria-label="Email"
+                >
+                  <Mail className="w-4 h-4" />
+                </button>
+              </div>
             </div>
+          </div>
+
+          {/* Mobile Navigation Menu */}
+          <div id="mobile-menu" className="hidden lg:hidden border-t border-gray-200 pt-4 pb-4">
+            <nav className="flex flex-col space-y-3">
+              <a href="#services" className="text-gray-700 hover:text-amber-600 transition-colors font-medium py-2 px-3 rounded-lg hover:bg-gray-50">Services</a>
+              <a href="#products" className="text-gray-700 hover:text-amber-600 transition-colors font-medium py-2 px-3 rounded-lg hover:bg-gray-50">Products</a>
+              <a href="#art-time" className="text-gray-700 hover:text-amber-600 transition-colors font-medium py-2 px-3 rounded-lg hover:bg-gray-50">Art Time</a>
+              <a href="#gallery" className="text-gray-700 hover:text-amber-600 transition-colors font-medium py-2 px-3 rounded-lg hover:bg-gray-50">Gallery</a>
+              <a href="#reviews" className="text-gray-700 hover:text-amber-600 transition-colors font-medium py-2 px-3 rounded-lg hover:bg-gray-50">Reviews</a>
+              <a href="#about" className="text-gray-700 hover:text-amber-600 transition-colors font-medium py-2 px-3 rounded-lg hover:bg-gray-50">About</a>
+              <a href="#contact" className="text-gray-700 hover:text-amber-600 transition-colors font-medium py-2 px-3 rounded-lg hover:bg-gray-50">Contact</a>
+            </nav>
           </div>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-amber-50 to-orange-50 py-20">
+      <section className="relative bg-gradient-to-r from-amber-50 to-orange-50 py-12 sm:py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h1 className="text-5xl font-bold text-gray-900 leading-tight mb-6">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <div className="text-center lg:text-left">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight mb-4 sm:mb-6">
                 Master the Art of 
                 <span className="text-amber-600"> Espresso</span>
               </h1>
-              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+              <p className="text-base sm:text-lg lg:text-xl text-gray-600 mb-6 sm:mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
                 Transform your coffee knowledge with professional training programs designed by industry experts. 
                 From barista skills to business management, we provide comprehensive education for coffee professionals.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
                 <button 
                   onClick={handleWhatsAppContact}
-                  className="bg-amber-600 text-white px-8 py-4 rounded-lg hover:bg-amber-700 transition-all duration-300 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                  className="bg-amber-600 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-lg hover:bg-amber-700 transition-all duration-300 font-semibold text-base sm:text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                 >
                   Start Your Training Journey
                 </button>
                 <button 
                   onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="border-2 border-amber-600 text-amber-600 px-8 py-4 rounded-lg hover:bg-amber-600 hover:text-white transition-all duration-300 font-semibold text-lg"
+                  className="border-2 border-amber-600 text-amber-600 px-6 py-3 sm:px-8 sm:py-4 rounded-lg hover:bg-amber-600 hover:text-white transition-all duration-300 font-semibold text-base sm:text-lg"
                 >
                   Explore Services
                 </button>
               </div>
             </div>
-            <div className="relative">
+            <div className="relative order-first lg:order-last">
               <img 
                 src="/about1.jpeg" 
                 alt="Professional Barista Training"
-                className="rounded-2xl shadow-2xl w-full h-96 object-cover"
+                className="rounded-2xl shadow-2xl w-full h-64 sm:h-80 lg:h-96 object-cover mx-auto max-w-md lg:max-w-none"
               />
-              <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-xl">
-                <div className="flex items-center space-x-3">
-                  <Award className="w-8 h-8 text-amber-600" />
+              <div className="absolute -bottom-3 -left-3 sm:-bottom-6 sm:-left-6 bg-white p-4 sm:p-6 rounded-xl shadow-xl">
+                <div className="flex items-center space-x-2 sm:space-x-3">
+                  <Award className="w-6 h-6 sm:w-8 sm:h-8 text-amber-600" />
                   <div>
-                    <p className="font-semibold text-gray-900">Certified Training</p>
-                    <p className="text-gray-600 text-sm">Professional Certification</p>
+                    <p className="font-semibold text-gray-900 text-sm sm:text-base">Certified Training</p>
+                    <p className="text-gray-600 text-xs sm:text-sm">Professional Certification</p>
                   </div>
                 </div>
               </div>
@@ -157,27 +217,27 @@ function App() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 bg-white">
+      <section id="services" className="py-12 sm:py-16 lg:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Services</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 sm:mb-4">Our Services</h2>
+            <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto">
               Professional coffee training and business consultation services
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
             {services.map((service, index) => (
               <div 
                 key={index}
-                className="bg-white border border-gray-100 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+                className="bg-white border border-gray-100 rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
               >
-                <div className="text-amber-600 mb-6">{service.icon}</div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">{service.title}</h3>
-                <p className="text-gray-600 mb-6 leading-relaxed">{service.description}</p>
+                <div className="text-amber-600 mb-4 sm:mb-6">{service.icon}</div>
+                <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3 sm:mb-4">{service.title}</h3>
+                <p className="text-gray-600 mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">{service.description}</p>
                 <button 
                   onClick={handleWhatsAppContact}
-                  className="text-amber-600 font-semibold hover:text-amber-700 transition-colors flex items-center space-x-2"
+                  className="text-amber-600 font-semibold hover:text-amber-700 transition-colors flex items-center space-x-2 text-sm sm:text-base"
                 >
                   <span>Enroll Me</span>
                   <span className="transform transition-transform group-hover:translate-x-1">→</span>
@@ -189,16 +249,16 @@ function App() {
       </section>
 
       {/* Products Section */}
-      <section id="products" className="py-20 bg-gray-50">
+      <section id="products" className="py-12 sm:py-16 lg:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Products On Sale</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 sm:mb-4">Products On Sale</h2>
+            <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto">
               Professional tools and materials to support your coffee training and business operations
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {products.map((product, index) => (
               <div 
                 key={index}
@@ -207,14 +267,14 @@ function App() {
                 <img 
                   src={product.image} 
                   alt={product.name}
-                  className="w-full h-48 object-cover"
+                  className="w-full h-40 sm:h-48 object-cover"
                 />
-                <div className="p-6">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-3">{product.name}</h3>
-                  <p className="text-gray-600 mb-4 text-sm leading-relaxed">{product.description}</p>
+                <div className="p-4 sm:p-6">
+                  <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2 sm:mb-3">{product.name}</h3>
+                  <p className="text-gray-600 mb-3 sm:mb-4 text-xs sm:text-sm leading-relaxed">{product.description}</p>
                   <button 
                     onClick={handleWhatsAppContact}
-                    className="w-full bg-amber-600 text-white py-2 rounded-lg hover:bg-amber-700 transition-colors font-medium"
+                    className="w-full bg-amber-600 text-white py-2 sm:py-3 rounded-lg hover:bg-amber-700 transition-colors font-medium text-sm sm:text-base"
                   >
                     Contact for Details
                   </button>
@@ -226,33 +286,33 @@ function App() {
       </section>
 
       {/* Product Videos Section */}
-      <section className="py-20 bg-white">
+      <section className="py-12 sm:py-16 lg:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Product Demonstrations</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 sm:mb-4">Product Demonstrations</h2>
+            <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto">
               Watch our training videos showcasing the products and techniques we teach
             </p>
           </div>
           
-          <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
             <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
               <video 
                 controls 
-                className="w-full h-64 object-cover"
-                // poster="/picture1.jpeg"
+                className="w-full h-48 sm:h-56 lg:h-64 object-cover"
+                poster="/picture1.jpeg"
               >
                 <source src="/vida1.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
-              <div className="p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">Products Showcase 1</h3>
-                <p className="text-gray-600 mb-4 text-sm leading-relaxed">
+              <div className="p-4 sm:p-6">
+                <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2 sm:mb-3">Products Showcase 1</h3>
+                <p className="text-gray-600 mb-3 sm:mb-4 text-xs sm:text-sm leading-relaxed">
                   Professional coffee training demonstration showcasing our equipment and techniques.
                 </p>
                 <button 
                   onClick={handleWhatsAppContact}
-                  className="w-full bg-amber-600 text-white py-2 rounded-lg hover:bg-amber-700 transition-colors font-medium"
+                  className="w-full bg-amber-600 text-white py-2 sm:py-3 rounded-lg hover:bg-amber-700 transition-colors font-medium text-sm sm:text-base"
                 >
                   Enroll Me
                 </button>
@@ -262,20 +322,20 @@ function App() {
             <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
               <video 
                 controls 
-                className="w-full h-64 object-cover"
-                // poster="/picture2.jpeg"
+                className="w-full h-48 sm:h-56 lg:h-64 object-cover"
+                poster="/picture2.jpeg"
               >
                 <source src="/vida2.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
-              <div className="p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">Products Showcese Video 2</h3>
-                <p className="text-gray-600 mb-4 text-sm leading-relaxed">
+              <div className="p-4 sm:p-6">
+                <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2 sm:mb-3">Products Showcase Video 2</h3>
+                <p className="text-gray-600 mb-3 sm:mb-4 text-xs sm:text-sm leading-relaxed">
                   Advanced coffee preparation techniques and machine operation training.
                 </p>
                 <button 
                   onClick={handleWhatsAppContact}
-                  className="w-full bg-amber-600 text-white py-2 rounded-lg hover:bg-amber-700 transition-colors font-medium"
+                  className="w-full bg-amber-600 text-white py-2 sm:py-3 rounded-lg hover:bg-amber-700 transition-colors font-medium text-sm sm:text-base"
                 >
                   Enroll Me
                 </button>
@@ -285,20 +345,20 @@ function App() {
             <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
               <video 
                 controls 
-                className="w-full h-64 object-cover"
-                // poster="/picture10.jpeg"
+                className="w-full h-48 sm:h-56 lg:h-64 object-cover"
+                poster="/picture10.jpeg"
               >
                 <source src="/vida3.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
-              <div className="p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">Products Showcese Video 3</h3>
-                <p className="text-gray-600 mb-4 text-sm leading-relaxed">
+              <div className="p-4 sm:p-6">
+                <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2 sm:mb-3">Products Showcase Video 3</h3>
+                <p className="text-gray-600 mb-3 sm:mb-4 text-xs sm:text-sm leading-relaxed">
                   Complete barista training program covering all aspects of coffee preparation.
                 </p>
                 <button 
                   onClick={handleWhatsAppContact}
-                  className="w-full bg-amber-600 text-white py-2 rounded-lg hover:bg-amber-700 transition-colors font-medium"
+                  className="w-full bg-amber-600 text-white py-2 sm:py-3 rounded-lg hover:bg-amber-700 transition-colors font-medium text-sm sm:text-base"
                 >
                   Enroll Me
                 </button>
@@ -309,11 +369,11 @@ function App() {
       </section>
 
       {/* Art Time Section */}
-      <section id="art-time" className="py-20 bg-gradient-to-r from-purple-50 to-pink-50">
+      <section id="art-time" className="py-12 sm:py-16 lg:py-20 bg-gradient-to-r from-purple-50 to-pink-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">🎨 Art Time</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 sm:mb-4">🎨 Art Time</h2>
+            <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto">
               Discover the creative side of coffee with our art demonstration video
             </p>
           </div>
@@ -322,27 +382,27 @@ function App() {
             <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
               <video 
                 controls 
-                className="w-full h-96 object-cover"
+                className="w-full h-64 sm:h-80 lg:h-96 object-cover"
               >
                 <source src="/art.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
-              <div className="p-8">
-                <h3 className="text-2xl font-semibold text-gray-900 mb-4">Coffee Art Demonstration</h3>
-                <p className="text-gray-600 mb-6 text-lg leading-relaxed">
+              <div className="p-4 sm:p-6 lg:p-8">
+                <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-3 sm:mb-4">Coffee Art Demonstration</h3>
+                <p className="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base lg:text-lg leading-relaxed">
                   Watch our expert demonstrate the beautiful art of coffee preparation. Learn techniques 
                   that transform your coffee into a work of art while mastering the craft of espresso making.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                   <button 
                     onClick={handleWhatsAppContact}
-                    className="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors font-medium"
+                    className="bg-purple-600 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-lg hover:bg-purple-700 transition-colors font-medium text-sm sm:text-base"
                   >
                     Learn Coffee Art
                   </button>
                   <button 
                     onClick={() => document.getElementById('gallery')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="border-2 border-purple-600 text-purple-600 px-6 py-3 rounded-lg hover:bg-purple-600 hover:text-white transition-colors font-medium"
+                    className="border-2 border-purple-600 text-purple-600 px-4 py-2 sm:px-6 sm:py-3 rounded-lg hover:bg-purple-600 hover:text-white transition-colors font-medium text-sm sm:text-base"
                   >
                     View Gallery
                   </button>
@@ -354,16 +414,16 @@ function App() {
       </section>
 
       {/* Gallery Section */}
-      <section id="gallery" className="py-20 bg-gray-50">
+      <section id="gallery" className="py-12 sm:py-16 lg:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Gallery</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 sm:mb-4">Gallery</h2>
+            <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto">
               Take a look at our training facility, equipment, and student experiences
             </p>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
             {[1, 2, 3, 5, 6, 7, 8, 9, 10].map((num) => (
               <div 
                 key={num}
@@ -381,25 +441,25 @@ function App() {
       </section>
 
       {/* Reviews & Feedback Section */}
-      <section id="reviews" className="py-20 bg-white">
+      <section id="reviews" className="py-12 sm:py-16 lg:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Reviews & Feedback</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 sm:mb-4">Reviews & Feedback</h2>
+            <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto">
               Share your experience and read what others say about our training programs
             </p>
           </div>
           
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12">
             {/* Review Form */}
-            <div className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl p-8 shadow-lg">
-              <h3 className="text-2xl font-semibold text-gray-900 mb-6">Share Your Review</h3>
-              <form className="space-y-6">
+            <div className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl p-4 sm:p-6 lg:p-8 shadow-lg">
+              <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-4 sm:mb-6">Share Your Review</h3>
+              <form className="space-y-4 sm:space-y-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Your Name</label>
                   <input 
                     type="text" 
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                    className="w-full px-3 py-2 sm:px-4 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent text-sm sm:text-base"
                     placeholder="Enter your name"
                   />
                 </div>
@@ -407,15 +467,15 @@ function App() {
                   <label className="block text-sm font-medium text-gray-700 mb-2">Email (Optional)</label>
                   <input 
                     type="email" 
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                    className="w-full px-3 py-2 sm:px-4 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent text-sm sm:text-base"
                     placeholder="your@email.com"
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Rating</label>
-                  <div className="flex space-x-2">
+                  <div className="flex space-x-1 sm:space-x-2">
                     {[1, 2, 3, 4, 5].map((star) => (
-                      <button key={star} type="button" className="text-2xl text-gray-300 hover:text-amber-500 transition-colors">
+                      <button key={star} type="button" className="text-xl sm:text-2xl text-gray-300 hover:text-amber-500 transition-colors">
                         ⭐
                       </button>
                     ))}
@@ -424,23 +484,23 @@ function App() {
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Your Review</label>
                   <textarea 
-                    rows={4}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                    rows={3}
+                    className="w-full px-3 py-2 sm:px-4 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent text-sm sm:text-base"
                     placeholder="Tell us about your training experience..."
                   ></textarea>
                 </div>
-                <div className="flex flex-col sm:flex-row gap-4">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                   <button 
                     type="button"
                     onClick={handleWhatsAppContact}
-                    className="flex-1 bg-amber-600 text-white py-3 rounded-lg hover:bg-amber-700 transition-colors font-medium"
+                    className="flex-1 bg-amber-600 text-white py-2 sm:py-3 rounded-lg hover:bg-amber-700 transition-colors font-medium text-sm sm:text-base"
                   >
                     Send via WhatsApp
                   </button>
                   <button 
                     type="button"
                     onClick={handleEmailContact}
-                    className="flex-1 border-2 border-amber-600 text-amber-600 py-3 rounded-lg hover:bg-amber-600 hover:text-white transition-colors font-medium"
+                    className="flex-1 border-2 border-amber-600 text-amber-600 py-2 sm:py-3 rounded-lg hover:bg-amber-600 hover:text-white transition-colors font-medium text-sm sm:text-base"
                   >
                     Send via Email
                   </button>
@@ -449,31 +509,31 @@ function App() {
             </div>
 
             {/* Audio Testimonial */}
-            <div className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl p-8 shadow-lg">
-              <div className="text-center mb-8">
-                <div className="w-20 h-20 bg-amber-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <div className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl p-4 sm:p-6 lg:p-8 shadow-lg">
+              <div className="text-center mb-6 sm:mb-8">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-amber-600 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                  <svg className="w-8 h-8 sm:w-10 sm:h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                   </svg>
                 </div>
-                <h3 className="text-2xl font-semibold text-gray-900 mb-2">Student Testimonial</h3>
-                <p className="text-gray-600">Listen to our student's experience</p>
+                <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-2">Student Testimonial</h3>
+                <p className="text-gray-600 text-sm sm:text-base">Listen to our student's experience</p>
               </div>
               
-              <div className="bg-white rounded-xl p-6 shadow-md">
+              <div className="bg-white rounded-xl p-4 sm:p-6 shadow-md">
                 <audio controls className="w-full">
                   <source src="/audio.ogg" type="audio/ogg" />
                   Your browser does not support the audio element.
                 </audio>
-                <p className="text-sm text-gray-500 mt-4 text-center">
+                <p className="text-xs sm:text-sm text-gray-500 mt-3 sm:mt-4 text-center">
                   Click play to hear our student's testimonial about their training experience
                 </p>
               </div>
               
-              <div className="text-center mt-6">
+              <div className="text-center mt-4 sm:mt-6">
                 <button 
                   onClick={handleWhatsAppContact}
-                  className="bg-amber-600 text-white px-8 py-3 rounded-lg hover:bg-amber-700 transition-colors font-medium"
+                  className="bg-amber-600 text-white px-6 py-2 sm:px-8 sm:py-3 rounded-lg hover:bg-amber-700 transition-colors font-medium text-sm sm:text-base"
                 >
                   Start Your Training Journey
                 </button>
@@ -482,22 +542,22 @@ function App() {
           </div>
 
           {/* Social Sharing */}
-          <div className="mt-16 text-center">
-            <h3 className="text-2xl font-semibold text-gray-900 mb-6">Share Your Experience</h3>
-            <p className="text-gray-600 mb-8">Help others discover our training by sharing on social media</p>
-            <div className="flex justify-center space-x-4">
+          <div className="mt-12 sm:mt-16 text-center">
+            <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-4 sm:mb-6">Share Your Experience</h3>
+            <p className="text-gray-600 mb-6 sm:mb-8 text-sm sm:text-base">Help others discover our training by sharing on social media</p>
+            <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
               <button 
                 onClick={() => window.open('https://www.instagram.com/sulespresso_ali?igsh=cXNqMDB4YXN6dzhk&utm_source=qr', '_blank')}
-                className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-300 font-medium flex items-center space-x-2"
+                className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-300 font-medium flex items-center justify-center space-x-2 text-sm sm:text-base"
               >
-                <Instagram className="w-5 h-5" />
+                <Instagram className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span>Share on Instagram</span>
               </button>
               <button 
                 onClick={() => window.open('https://www.tiktok.com/@espresso.doctor?_t=ZS-8zrYidw3jFK&_r=1', '_blank')}
-                className="bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition-colors font-medium flex items-center space-x-2"
+                className="bg-black text-white px-4 py-2 sm:px-6 sm:py-3 rounded-lg hover:bg-gray-800 transition-colors font-medium flex items-center justify-center space-x-2 text-sm sm:text-base"
               >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
                 </svg>
                 <span>Share on TikTok</span>

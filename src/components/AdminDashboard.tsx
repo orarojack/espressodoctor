@@ -23,7 +23,12 @@ const AdminDashboard = ({ onLogout }: { onLogout: () => void }) => {
     if (savedFiles) {
       try {
         const parsedFiles = JSON.parse(savedFiles);
-        setMediaFiles(parsedFiles);
+        // Convert string dates back to Date objects
+        const filesWithDates = parsedFiles.map((file: any) => ({
+          ...file,
+          uploadDate: new Date(file.uploadDate)
+        }));
+        setMediaFiles(filesWithDates);
       } catch (error) {
         console.error('Error loading saved media files:', error);
       }
@@ -86,6 +91,10 @@ const AdminDashboard = ({ onLogout }: { onLogout: () => void }) => {
   };
 
   const formatDate = (date: Date) => {
+    // Ensure we have a valid Date object
+    if (!date || !(date instanceof Date) || isNaN(date.getTime())) {
+      return 'Unknown date';
+    }
     return date.toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'short',

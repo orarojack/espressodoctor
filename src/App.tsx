@@ -1,5 +1,8 @@
 import { Phone, Mail, Coffee, Award, Users, Star, MapPin, Clock, Instagram } from 'lucide-react';
 import { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import AdminPage from './pages/AdminPage';
+import MediaGallery from './pages/MediaGallery';
 
 function App() {
   const [selectedRating, setSelectedRating] = useState(0);
@@ -105,7 +108,7 @@ This review was submitted through the website.`;
     setSelectedRating(0);
   };
 
-  return (
+  const MainWebsite = () => (
     <div className="min-h-screen bg-white">
       {/* Header */}
       <header className="bg-white shadow-lg sticky top-0 z-50 backdrop-blur-sm bg-white/95">
@@ -130,6 +133,7 @@ This review was submitted through the website.`;
               <a href="#products" className="text-gray-700 hover:text-amber-600 transition-colors font-medium text-sm xl:text-base">Products</a>
               <a href="#art-time" className="text-gray-700 hover:text-amber-600 transition-colors font-medium text-sm xl:text-base">Art Time</a>
               <a href="#gallery" className="text-gray-700 hover:text-amber-600 transition-colors font-medium text-sm xl:text-base">Gallery</a>
+              <a href="/media-gallery" className="text-gray-700 hover:text-amber-600 transition-colors font-medium text-sm xl:text-base">Media Gallery</a>
               <a href="#reviews" className="text-gray-700 hover:text-amber-600 transition-colors font-medium text-sm xl:text-base">Reviews</a>
               <a href="#about" className="text-gray-700 hover:text-amber-600 transition-colors font-medium text-sm xl:text-base">About</a>
               <a href="#contact" className="text-gray-700 hover:text-amber-600 transition-colors font-medium text-sm xl:text-base">Contact</a>
@@ -200,6 +204,7 @@ This review was submitted through the website.`;
               <a href="#products" className="text-gray-700 hover:text-amber-600 transition-colors font-medium py-2 px-3 rounded-lg hover:bg-gray-50">Products</a>
               <a href="#art-time" className="text-gray-700 hover:text-amber-600 transition-colors font-medium py-2 px-3 rounded-lg hover:bg-gray-50">Art Time</a>
               <a href="#gallery" className="text-gray-700 hover:text-amber-600 transition-colors font-medium py-2 px-3 rounded-lg hover:bg-gray-50">Gallery</a>
+              <a href="/media-gallery" className="text-gray-700 hover:text-amber-600 transition-colors font-medium py-2 px-3 rounded-lg hover:bg-gray-50">Media Gallery</a>
               <a href="#reviews" className="text-gray-700 hover:text-amber-600 transition-colors font-medium py-2 px-3 rounded-lg hover:bg-gray-50">Reviews</a>
               <a href="#about" className="text-gray-700 hover:text-amber-600 transition-colors font-medium py-2 px-3 rounded-lg hover:bg-gray-50">About</a>
               <a href="#contact" className="text-gray-700 hover:text-amber-600 transition-colors font-medium py-2 px-3 rounded-lg hover:bg-gray-50">Contact</a>
@@ -833,6 +838,7 @@ This review was submitted through the website.`;
                 <a href="#products" className="text-gray-400 hover:text-white transition-colors block">Products</a>
                 <a href="#art-time" className="text-gray-400 hover:text-white transition-colors block">Art Time</a>
                 <a href="#gallery" className="text-gray-400 hover:text-white transition-colors block">Gallery</a>
+                <a href="/media-gallery" className="text-gray-400 hover:text-white transition-colors block">Media Gallery</a>
                 <a href="#reviews" className="text-gray-400 hover:text-white transition-colors block">Reviews</a>
                 <a href="#about" className="text-gray-400 hover:text-white transition-colors block">About Us</a>
                 <a href="#contact" className="text-gray-400 hover:text-white transition-colors block">Contact</a>
@@ -889,6 +895,16 @@ This review was submitted through the website.`;
         </div>
       </footer>
     </div>
+  );
+
+  return (
+    <Router>
+      <Routes>
+        <Route path="/admin" element={<AdminPage />} />
+        <Route path="/media-gallery" element={<MediaGallery />} />
+        <Route path="/*" element={<MainWebsite />} />
+      </Routes>
+    </Router>
   );
 }
 
